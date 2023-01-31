@@ -17,6 +17,8 @@ public class PlayerControllerX : MonoBehaviour
     public AudioClip moneySound;
     public AudioClip explodeSound;
 
+    private float counter;
+
 
     void Start()
     {
@@ -47,24 +49,28 @@ public class PlayerControllerX : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Bomb"))
+        if (other.gameObject.CompareTag("Bomb")|| other.gameObject.CompareTag("Ground"))
         {
-            GameOver();
             Destroy(other.gameObject);
+            GameOver();
             if (!gameOver)
             {
-                explosionParticle.Play();
+                explosionParticle.Stop();
             }
-        } 
-
+            if (other.gameObject.CompareTag("Bomb") && other.gameObject.CompareTag("Ground"))
+            {
+               
+            }
+        }
 
         else if (other.gameObject.CompareTag("Money"))
         {
             fireworksParticle.Play();
             playerAudio.PlayOneShot(moneySound, 1);
             Destroy(other.gameObject);
+            counter ++;
+            Debug.Log(string.Format("You have {0} coins",counter));
         }
-
     }
 
 }
