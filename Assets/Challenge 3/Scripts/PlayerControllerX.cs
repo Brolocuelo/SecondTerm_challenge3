@@ -27,7 +27,6 @@ public class PlayerControllerX : MonoBehaviour
 
         playerRb = GetComponent<Rigidbody>();
         playerRb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-
     }
 
     void Update()
@@ -44,7 +43,6 @@ public class PlayerControllerX : MonoBehaviour
         explosionParticle.Play();
         playerAudio.PlayOneShot(explodeSound, 1);
         Debug.Log("Game Over!");
-
     }
 
     private void OnCollisionEnter(Collision other)
@@ -57,6 +55,7 @@ public class PlayerControllerX : MonoBehaviour
             {
                 explosionParticle.Stop();
             }
+
             if (other.gameObject.CompareTag("Bomb") && other.gameObject.CompareTag("Ground"))
             {
                

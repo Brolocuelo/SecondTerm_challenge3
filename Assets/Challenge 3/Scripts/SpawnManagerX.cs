@@ -30,6 +30,5 @@ public class SpawnManagerX : MonoBehaviour
         {
             CancelInvoke("SpawnObstacle");
         }
-
     }
 }
