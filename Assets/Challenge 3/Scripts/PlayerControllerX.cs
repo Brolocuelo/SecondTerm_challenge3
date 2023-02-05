@@ -43,6 +43,7 @@ public class PlayerControllerX : MonoBehaviour
         explosionParticle.Play();
         playerAudio.PlayOneShot(explodeSound, 1);
         Debug.Log("Game Over!");
+        playerAudio = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision other)
