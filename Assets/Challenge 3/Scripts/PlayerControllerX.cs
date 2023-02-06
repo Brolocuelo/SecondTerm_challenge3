@@ -14,6 +14,7 @@ public class PlayerControllerX : MonoBehaviour
     public ParticleSystem fireworksParticle;
 
     private AudioSource playerAudio;
+    private AudioSource _audioSource;
     public AudioClip moneySound;
     public AudioClip explodeSound;
 
@@ -43,7 +44,7 @@ public class PlayerControllerX : MonoBehaviour
         explosionParticle.Play();
         playerAudio.PlayOneShot(explodeSound, 1);
         Debug.Log("Game Over!");
-        playerAudio = GetComponent<AudioSource>();
+        _audioSource.Stop();
     }
 
     private void OnCollisionEnter(Collision other)
